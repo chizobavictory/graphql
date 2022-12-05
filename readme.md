@@ -1,0 +1,1 @@
+This is a siple express app that uses GraphQL to query the server instead of the conventional REST. 
