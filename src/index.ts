@@ -8,7 +8,7 @@ dotenv.config()
 
 const app = express()
 app.use(logger('dev'))
-
+mongoose.set('strictQuery', false)
 
 mongoose.connect(process.env.MONGO_URL!, ()=>{
   console.log('MongoDB Database connected successfully')
