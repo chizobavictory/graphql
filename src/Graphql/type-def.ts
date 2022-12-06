@@ -13,7 +13,21 @@ type Listing {
   rating: Int,
 }
 
-imput CreateListingInput {
+type Message {
+  message: String
+}
+
+input CreateListingInput {
+  title: String!,
+  image: String!,
+  address: String!,
+  price: Int!,
+  numOfBed: Int!,
+  numOfBaths: Int!,
+  rating: Int!,
+}
+
+input UpdateListing {
   title: String,
   image: String,
   address: String,
@@ -22,17 +36,18 @@ imput CreateListingInput {
   numOfBaths: Int,
   rating: Int,
 }
-
-
-typeQuery{
+type Query{
   allListings: [Listing]!
   singleListing(id: ID!): Listing
 }
 
 
 type Mutation{
-createListing(input: ListingInput): Listing
-updateListing(input: ListingInput): Listing
+createListing(input: CreateListingInput): Listing
+updateListing(input: UpdateListing): Listing
 deleteListing(id:ID!): Message!
 }
 `;
+
+
+export default typeDef
