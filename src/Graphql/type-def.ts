@@ -1,53 +1,81 @@
-import { gql } from "apollo-server";
+import {gql} from 'apollo-server'
 
-const typeDef = gql`
+const typeDefs = gql`
 
-type Listing {
+type User{
   id: ID!,
-  title: String,
+  fullName: String,
+  email: String,
+  phoneNumber: Int,
+  password: String,
+}
+
+input CreateUserInput{
+  fullName: String,
+  email: String,
+  phoneNumber: Int,
+  password: String,
+}
+
+input UpdateUser{
+  fullName: String,
+  email: String,
+  phoneNumber: Int,
+  password: String,
+}
+
+type Hotel{
+  id: ID!,
+  userId: String,
+  description: String,
   image: String,
   address: String,
   price: Int,
-  numOfBed: Int,
+  numOfBeds: Int,
   numOfBaths: Int,
-  rating: Int,
-}
-
-type Message {
-  message: String
-}
-
-input CreateListingInput {
-  title: String!,
-  image: String!,
-  address: String!,
-  price: Int!,
-  numOfBed: Int!,
-  numOfBaths: Int!,
-  rating: Int!,
-}
-
-input UpdateListing {
-  title: String,
+  ratings: Int,
+   }
+  type Message{
+    message: String
+   }
+  input CreateHotelInput{
+  id: ID!,
+  userId: String,
+  description: String,
   image: String,
   address: String,
   price: Int,
-  numOfBed: Int,
+  numOfBeds: Int,
   numOfBaths: Int,
-  rating: Int,
-}
-type Query{
-  allListings: [Listing]!
-  singleListing(id: ID!): Listing
-}
+  ratings: Int
+   }
 
+   input UpdateHotel{
+  id: ID!,
+  userId: String,
+  description: String,
+  image: String,
+  address: String,
+  price: Int,
+  numOfBeds: Int,
+  numOfBaths: Int,
+  ratings: Int,
+  }
 
-type Mutation{
-createListing(input: CreateListingInput): Listing
-updateListing(input: UpdateListing): Listing
-deleteListing(id:ID!): Message!
-}
-`;
+  type Query{
+        allUsers: [User]!
+        singleUser(id: ID!): User
+        allHotels: [Hotel]!
+        singleHotel(id: ID!): Hotel
+    }
 
-
-export default typeDef
+  type Mutation{
+        createUser(input: CreateUserInput): User
+        UpdateUser(input: UpdateUser): User
+        deleteUser(id: ID!): Message!
+        createHotel(input: CreateHotelInput): Hotel
+        UpdateHotel(input: UpdateHotel): Hotel
+        deleteHotel(id: ID!): Message!
+    }
+`
+export default typeDefs

@@ -1,1 +1,8 @@
-This is a siple express app that uses GraphQL to query the server instead of the conventional REST. 
+# GRAPHQL implementation
+This app is the GraphQL implementation of the hotel app REST API I built.
+
+### Tech Stack 
+Typescript
+Apollo Server
+Nodejs
+MongoDB
