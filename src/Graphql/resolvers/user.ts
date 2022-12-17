@@ -1,5 +1,5 @@
 import User from "../../Model/userModel";
-import { CreateUser } from "./type";
+import { CreateUser, DeleteUser, updateUser } from "./type";
 
 const UserResolver = {
   Query: {
@@ -29,7 +29,7 @@ const UserResolver = {
         console.log(err);
       }
     },
-    deleteUser: async (_: unknown, args: any) => {
+    deleteUser: async (_: unknown, args: DeleteUser) => {
       try {
         const user = await User.findByIdAndDelete(args.id);
         if (user) {
@@ -38,9 +38,18 @@ const UserResolver = {
       } catch (err) {
         console.log(err);
       }
+    },
+  },
+  updateUser: async (_: unknown, args: updateUser) => {
+    try {
+      const user = await User.findByIdAndUpdate(args.id, args.input, { new: true });
+      if (user) {
+        return { message: "User updated successfully", user };
+      }
+    } catch (err) {
+      console.log(err);
     }
   },
 };
-
 
 export default UserResolver;
