@@ -6,3 +6,9 @@ Typescript
 Apollo Server
 Nodejs
 MongoDB
+
+### How to run
+1. Clone the repo
+2. Run `yarn`
+3. Run `yarn start`
+
