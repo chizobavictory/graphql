@@ -19,6 +19,7 @@ const typeDefs = gql`
   }
 
   input updateUser {
+    id: ID!
     fullName: String
     email: String
     phoneNumber: Int

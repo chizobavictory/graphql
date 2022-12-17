@@ -9,9 +9,17 @@ export interface CreateUser{
   input: User
 }
 
-export interface updateUser{
-  input: User;
+export interface ArgsforupdateUser{
+  // input(id: string, input: any, arg2: { new: true; }): unknown;
   id: string;
+  fullName: string;
+  email: string;
+  phoneNumber: number;
+  password: string;
+}
+
+export interface updateUser{
+  input: ArgsforupdateUser;
 }
 
 export interface DeleteUser{

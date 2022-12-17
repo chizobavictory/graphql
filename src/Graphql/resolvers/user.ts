@@ -1,5 +1,5 @@
 import User from "../../Model/userModel";
-import { CreateUser, DeleteUser, updateUser } from "./type";
+import { ArgsforupdateUser, CreateUser, DeleteUser, updateUser } from "./type";
 
 const UserResolver = {
   Query: {
@@ -40,9 +40,9 @@ const UserResolver = {
       }
     },
   },
-  updateUser: async (_: unknown, args: updateUser) => {
+  updateUser: async (_: unknown, args: ArgsforupdateUser) => {
     try {
-      const user = await User.findByIdAndUpdate(args.id, args.input, { new: true });
+      const user = await User.findByIdAndUpdate(args.id, { new: true });
       if (user) {
         return { message: "User updated successfully", user };
       }
