@@ -1,6 +1,7 @@
 import {gql} from 'apollo-server'
 
 const typeDefs = gql`
+#This is a user type for the application
 
 type User{
   id: ID!,
@@ -35,12 +36,12 @@ type Hotel{
   numOfBaths: Int,
   ratings: Int,
    }
+
   type Message{
     message: String
    }
+
   input CreateHotelInput{
-  id: ID!,
-  userId: String,
   description: String,
   image: String,
   address: String,
@@ -50,7 +51,7 @@ type Hotel{
   ratings: Int
    }
 
-   input UpdateHotel{
+  input UpdateHotel{
   id: ID!,
   userId: String,
   description: String,
