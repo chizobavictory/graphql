@@ -13,11 +13,9 @@ const server = new ApolloServer({
 })
 
 mongoose.set('strictQuery', true)
-mongoose.connect(process.env.MONGO_URL!, ()=>{
+mongoose.connect(process.env.MONGO_URL!, { bufferCommands: false }, ()=>{
     console.log("Database connected")
 })
-
-
 
 
 const Port = 4000
