@@ -9,8 +9,9 @@ export interface CreateUser{
   input: User
 }
 
-export interface UpdateUser{
-  input: User
+export interface updateUser{
+  input: User;
+  id: string;
 }
 
 export interface DeleteUser{
