@@ -29,6 +29,16 @@ const UserResolver = {
         console.log(err);
       }
     },
+    deleteUser: async (_: unknown, args: any) => {
+      try {
+        const user = await User.findByIdAndDelete(args.id);
+        if (user) {
+          return { message: "User deleted successfully" };
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
   },
 };
 

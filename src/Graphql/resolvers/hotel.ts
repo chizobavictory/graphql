@@ -1,5 +1,5 @@
 import Hotel from '../../Model/hotelModel'
-import {CreateHotel} from './type'
+import {CreateHotel, DeleteHotel} from './type'
 import {UpdateHotel} from './type'
 
 const HotelResolver = {
@@ -17,13 +17,13 @@ const HotelResolver = {
     createHotel: async (_:unknown,args:CreateHotel)=>{
         try {
             const newlisting = {
-                title: args.input.title,
+                description: args.input.description,
                 image: args.input.image,
                 address: args.input.address,
                 price: args.input.price,
                 numOfBeds: args.input.numOfBeds,    
                 numOfBaths: args.input.numOfBaths,
-                rating: args.input.rating
+                ratings: args.input.ratings
             }
 
             const listings = await Hotel.create(newlisting)
@@ -41,13 +41,13 @@ const HotelResolver = {
 
            const UpdateListing ={
                 id: args.input.id,
-                title: args.input.title,
+                description: args.input.description,
                 image: args.input.image,
                 address: args.input.address,
                 price: args.input.price,
-                numOfBeds: args.input.numOfBeds,
+                numOfBeds: args.input.numOfBeds,    
                 numOfBaths: args.input.numOfBaths,
-                rating: args.input.rating
+                ratings: args.input.ratings
            }
 
           const updateNew = await Hotel.
@@ -60,19 +60,20 @@ const HotelResolver = {
         }
     
 
+    },
+  
+    deleteHotel: async (_:unknown,args:DeleteHotel)=>{
+        try{
+            const id = args.id
+            const deleted = await Hotel.findByIdAndDelete(id)
+            if(deleted){
+                return deleted
+            }
+        }catch(err){
+            console.log(err)
+        }
     }
-    // DeleteHotel: async (_:unknown,args:DeleteHotel)=>{
-    //  try{
-    // const deleteListing = await Hotel.findOneAndDelete(id:args.id )
-    // if(deleteListing){
-    //     return {
-    //         message: "Listing deleted successfully"
-    //     }
-    // }
-    //  }catch(err){
-    //      console.log(err)
-    //  }
-    // }
+
 }
 }
 
