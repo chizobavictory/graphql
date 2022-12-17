@@ -1,7 +1,7 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
-  #This is a user type for the application
+  #This is the user type for the application
 
   type User {
     id: ID!
@@ -18,7 +18,7 @@ const typeDefs = gql`
     password: String
   }
 
-  input UpdateUser {
+  input updateUser {
     fullName: String
     email: String
     phoneNumber: Int
@@ -41,6 +41,7 @@ const typeDefs = gql`
     message: String
   }
 
+  #This is the hotel type for the application
   input CreateHotelInput {
     description: String
     image: String
@@ -72,7 +73,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(input: CreateUserInput): User
-    UpdateUser(input: UpdateUser): User
+    updateUser(input: updateUser): User
     deleteUser(id: ID!): Message!
     createHotel(input: CreateHotelInput): Hotel
     UpdateHotel(input: UpdateHotel): Hotel
